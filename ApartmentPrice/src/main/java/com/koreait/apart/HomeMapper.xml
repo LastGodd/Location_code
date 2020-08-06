@@ -2,16 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.koreait.apart.HomeMapper">
 	
+	<insert id="insApartmentInfo" parameterType="ItemDTO">
+		INSERT INTO apartment_info
+		(
+			deal_amount, build_year, deal_year, deal_month, deal_day
+			, dong, apartment_name, area_for_exclusive_use, jibun, flr
+			, location_cd
+		)
+		SELECT
+			${dealAmount}, #{buildYear}, #{dealYear}, #{dealMonth}, #{dealDay}
+			, #{dong}, #{apartmentName}, #{areaForExclusiveUse}, #{jibun}, #{flr}
+			, cd
+		FROM location_code
+		WHERE external_cd = #{regionalCode}
+	</insert>
+	
 	<select id="selLocationCdList" resultType="LocationCdVO">
 		SELECT cd, local_nm, external_cd
 		FROM location_code
 		ORDER BY local_nm ASC
 	</select>
-	
-	
-	
-	
-	
-	
 	
 </mapper>

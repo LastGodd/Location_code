@@ -23,20 +23,17 @@
 						<option value="${i}">${i}</option>
 					</c:forEach>
 				</select>
-				-
-				<select name="day">
-					<c:forEach var="i" begin="1" end="31">
-						<option value="${i}">${i}</option>
-					</c:forEach>
-				</select>
 			</div>
 			<div>
 				지역:
-				<select name="locationCd>
+				<select name="locationCd">
 					<c:forEach var="item" items="${locationList}">
 						<option value="${item.external_cd}">${item.local_nm}</option>
 					</c:forEach>
 				</select>
+			</div>
+			<div>
+				<input type="submit" value="검색">
 			</div>
 		</form>
 	</div>
